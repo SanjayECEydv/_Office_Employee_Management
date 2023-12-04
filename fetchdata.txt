@@ -1,0 +1,82 @@
+Basic Data Retrie in Django Framwork
+
+
+
+
+C:\Users\sanja\OneDrive\Desktop\Employ management system\emp>python manage.py shell
+Python 3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>>
+>>> from website.models import Student
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ImportError: cannot import name 'Student' from 'website.models' (C:\Users\sanja\OneDrive\Desktop\Employ management system\emp\website\models.py)
+>>> from website.models import Students
+>>> student= Students(name="Sanjay", college="NRI", age=24, is_active= True)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\sanja\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\base.py", line 559, in __init__
+    raise TypeError(
+TypeError: Students() got an unexpected keyword argument 'is_active'
+>>> student= Students(name="Sanjay", college="NRI", age=24, isActive= True)
+>>> student
+<Students: Students object (None)>
+>>> student.name
+'Sanjay'
+>>> student.college
+'NRI'
+>>> student.college
+'NRI'
+>>> student.age
+24
+>>> student.isActive
+True
+>>> student.save()
+>>> student.name
+'Sanjay'
+>>> student.name="Sanjay Kumar Yadav"
+>>> student.save()
+>>>  student1= Students(name="Nadim", college="LNCT", age=26, isActive= True)
+  File "<console>", line 1
+    student1= Students(name="Nadim", college="LNCT", age=26, isActive= True)
+IndentationError: unexpected indent
+>>> student1= Students(name="Nadim", college="LNCT", age=26, isActive= True)
+>>> student1.name
+'Nadim'
+>>> student1.age
+26
+>>> student1.save()
+>>> x=student.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\sanja\AppData\Local\Programs\Python\Python310\lib\site-packages\django\db\models\manager.py", line 186, in __get__
+    raise AttributeError(
+AttributeError: Manager isn't accessible via Students instances
+>>> x=Students.objects.get(id=1)
+>>> x
+<Students: Students object (1)>
+>>> x.name
+'Sanjay Kumar Yadav'
+>>> x=Students.objects.get(id=2)
+>>> x.name
+'Nadim'
+>>> all= Students.objects.all()
+>>> all
+<QuerySet [<Students: Students object (1)>, <Students: Students object (2)>]>
+>>> for i in all:
+... print(i.name)
+  File "<console>", line 2
+    print(i.name)
+    ^^^^^
+IndentationError: expected an indented block after 'for' statement on line 1
+>>> for i in all:
+...     print(i.name)
+...
+Sanjay Kumar Yadav
+Nadim
+>>> exit
+Use exit() or Ctrl-Z plus Return to exit
+>>> exit;
+Use exit() or Ctrl-Z plus Return to exit
+>>> exit();
